@@ -5,6 +5,8 @@ Reads Darknet19 config and weights and creates Keras model with TF backend.
 Currently only supports layers in Darknet19 config.
 """
 
+from __future__ import print_function
+
 import argparse
 import configparser
 import io
@@ -57,7 +59,7 @@ def unique_config_sections(config_file):
                 _section = section + '_' + str(section_counters[section])
                 section_counters[section] += 1
                 line = line.replace(section, _section)
-            output_stream.write(line)
+            output_stream.write(unicode(line))
     output_stream.seek(0)
     return output_stream
 
